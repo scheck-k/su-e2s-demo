@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Multi-speaker Speech Synthesis from Electromyographic Signals by Soft Speech Unit Prediction</title>
+  <meta name="description" content="Demo webpage for the SU-E2S papp">
+</head>
+
+<body>
+  <h1>Listening samples for the paper: </br>
+    Multi-speaker Speech Synthesis from Electromyographic Signals by Soft Speech Unit Prediction</h1>
+  <h3>Authors: Kevin Scheck, Tanja Schultz (Cognitive Systems Lab, University of Bremen, Germany) <br />
+    Accepted at ICASSP 2023</h3>
+
+  <h3>Speech-Unit-based EMG-to-Speech</h3>
+  <p>
+    Conventional Electromyography-to-Speech (E2S) models convert Electromyography (EMG) signals to acoustic speech
+    features, such as mel-spectrograms.
+    In this work, we predict content representations of Voice Conversion (VC) models instead.
+    For Speech-Unit-based EMG-to-Speech (SU-E2S), we predict soft speech units of the system of van Niekerk et al.
+    (2022).
+    We use the <a href="https://github.com/bshall/soft-vc">HuBERT-soft encoder</a> to extract soft speech units of the
+    acoustic speech target and predict soft units with an EMG encoder.
+    We furthermore train a multi-speaker acoustic decoder, which processes soft speech units and a speaker embedding.
+    As such, our model can perform multi-speaker E2S i.e. output the speech in a voice of another target speaker.
+    We hope that we can leverage multi-speaker E2S for voice reconstruction in future work.</p>
+
+  <h3>Listening examples </h3>
+  <p>In the following, we present listening examples of the synthesis of a silent EMG signal to speech in multiple
+    voices.
+    The silent EMG signal is from the test set of the <a href="https://zenodo.org/record/4064409">data set of Gaddy and
+      Klein<a />.
+      The speakers for target voices are from the <a href="https://datashare.ed.ac.uk/handle/10283/2950">VCTK data
+        set</a>.
+      Target speakers were either included during acoustic decoder and vocoder training (seen) or were never used in any
+      training (unseen).
+      The first listening example showcases the reference speech recording of the EMG speaker audibly saying the content
+      of the silent EMG utterance.
+      <table>
+        <tr>
+          <td><b>Target voice</b></td>
+          <td><b>Reference utterance</b></td>
+          <td><b>Speech synthesis from EMG</b></td>
+        </tr>
+        <tr>
+          <td>EMG speaker (seen)</td>
+          <td>
+            <audio controls
+              src="audio/og/eval_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350_og.wav">
+              <a
+                href="audio/og/eval_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350_og.wav">
+                Download audio
+              </a>
+            </audio>
+          </td>
+          <td>
+            <audio controls
+              src="audio/og/eval_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350_synth.wav">
+              <a
+                href="audio/og/eval_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350_synth.wav">
+                Download audio
+              </a>
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>VCTK p226 (seen)</td>
+          <td>
+            <audio controls
+              src="audio/seen/eer-eval-p226_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350__spkr_ref_p226_003_mic2.wav">
+              <a
+                href="audio/seen/eer-eval-p226_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350__spkr_ref_p226_003_mic2.wav">
+                Download audio
+              </a>
+            </audio>
+          </td>
+          <td>
+            <audio controls
+              src="audio/seen/eer-eval-p226_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350.wav">
+              <a
+                href="audio/seen/eer-eval-p226_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350.wav">
+                Download audio
+              </a>
+            </audio>
+          </td>
+        <tr>
+          <td>VCTK p231 (seen)</td>
+          <td>
+            <audio controls
+              src="audio/seen/eer-eval-p231_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350__spkr_ref_p231_003_mic2.wav">
+              <a
+                href="audio/seen/eer-eval-p231_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350__spkr_ref_p231_003_mic2.wav">
+                Download audio
+              </a>
+            </audio>
+          </td>
+          <td>
+            <audio controls
+              src="audio/seen/eer-eval-p231_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350.wav">
+              <a
+                href="audio/seen/eer-eval-p231_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350.wav">
+                Download audio
+              </a>
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>VCTK p316 (unseen)</td>
+          <td>
+            <audio controls
+              src="audio/unseen/eer-eval-p316_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350__spkr_ref_p316_003_mic2.wav">
+              <a
+                href="audio/unseen/eer-eval-p316_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350__spkr_ref_p316_003_mic2.wavv">
+                Download audio
+              </a>
+            </audio>
+          </td>
+          <td>
+            <audio controls
+              src="audio/unseen/eer-eval-p316_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350.wav">
+              <a
+                href="audio/unseen/eer-eval-p316_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350.wav">
+                Download audio
+              </a>
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>VCTK p333 (unseen)</td>
+          <td>
+            <audio controls
+              src="audio/unseen/eer-eval-p333_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350__spkr_ref_p333_003_mic2.wav">
+              <a
+                href="audio/unseen/eer-eval-p333_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350__spkr_ref_p333_003_mic2.wav">
+                Download audio
+              </a>
+          </td>
+          <td>
+            <audio controls
+              src="audio/unseen/eer-eval-p333_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350.wav">
+              <a
+                href="audio/unseen/eer-eval-p333_001__emg_is_silent__audio_tgt_ref__vc-multi-spkr__voiced_parallel_data_5-10_350.wav">
+                Download audio
+              </a>
+          </td>
+        </tr>
+      </table>
+  </p>
+
+</body>
+</html>
